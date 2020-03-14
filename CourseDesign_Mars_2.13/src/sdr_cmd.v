@@ -1,0 +1,170 @@
+module sdr_cmd(
+	input 				 clk,
+	input 				 rst_n,
+	
+	input [24:0] 		 sys_wraddr,//写SDRAM时地址
+	input [24:0] 		 sys_rdaddr,//读SDRAM时地址
+	input [10:0]   	 sdr_wr_burst,//写入sdram的突发长度
+	input [10:0]   	 sdr_rd_burst,//从sdram读出的突发长度
+	
+	input [4:0] 		 init_state,//sdram 初始化状态
+	input [4:0] 		 work_state,//sdram 工作状态
+	input [10:0] 		 cnt_clk,//时钟计数器
+	input 				 sdr_rd_wr,//sdram读写控制信号，低为写，高为读
+	
+	output reg         sdr_cke,//sdram时钟使能
+	output 			sdr_cs_n,//sdram 片选
+	output 			sdr_ras_n,//sdram 行有效
+	output 			sdr_cas_n,//sdram 列有效
+	output 			sdr_we_n,//sdram 写使能
+	output reg [12:0]  sdr_a,//sdram 行/列地址
+	output reg [1:0]   sdr_ba//sdram bank地址
+	);
+	
+	`include "para.v"
+	
+	
+	wire [24:0] sys_addr;//sdram读写地址
+	reg  [3:0]  sdr_cmd;//sdram命令
+	
+	//****************************************************************************************************************
+	
+	//命令
+	assign {sdr_cs_n,sdr_ras_n,sdr_cas_n,sdr_we_n} = sdr_cmd;
+
+	//sdram读写地址总线控制
+	assign sys_addr = sdr_rd_wr ? sys_rdaddr:sys_wraddr;
+
+	//命令控制
+	always @ (posedge clk or negedge rst_n)
+	begin
+		if(!rst_n)
+			begin
+				sdr_cke <= 1'b0;
+				sdr_cmd <= 4'b1111;
+				sdr_a <= 13'h1fff;
+				sdr_ba <= 2'b11;
+			end
+		else
+			case(init_state)
+				`I_NOP,	`I_TRP,`I_TRC,`I_TMRD:
+					begin
+						sdr_cke <= 1'b1;
+						sdr_cmd <= 4'b0111;
+						sdr_a <= 13'h1fff;
+						sdr_ba <= 2'b11;
+					end
+				`I_PRE:
+					begin
+						sdr_cke <= 1'b1;
+						sdr_a <= 13'h1fff;
+						sdr_ba <= 2'b11;
+						sdr_cmd <= 4'b0010;
+					end			
+				`I_AUTO_REF:
+					begin
+						sdr_cke <= 1'b1;
+						sdr_cmd <= 4'b0001;
+						sdr_a <= 13'h1fff;
+						sdr_ba <= 2'b11;
+					end
+				`I_MRS:
+					begin
+						sdr_cke <= 1'b1;
+						sdr_cmd <= 4'b0000;
+						sdr_a <= 13'h0027;
+						sdr_ba <= 2'b00;
+					end				
+				`I_DONE:
+					begin
+						case(work_state)
+							`W_IDLE,`W_TRCD,`W_WD,`W_TRP,`W_AUTO_REF_TRP,`W_TRC1,`W_TRC2:
+								begin
+									sdr_cke <= 1'b1;
+									sdr_cmd <= 4'b0111;
+									sdr_a <= 13'h1fff;
+									sdr_ba <= 2'b11;
+								end
+							`W_ACTIVE://行有效
+								begin
+									sdr_cke <= 1'b1;
+									sdr_cmd <= 4'b0011;
+									sdr_a <= sys_addr[22:10];//行地址
+									sdr_ba <= sys_addr[24:23];//bank地址
+								end
+							`W_READ://读指令
+								begin
+									sdr_cke <= 1'b1;
+									sdr_cmd <= 4'b0101;
+									sdr_a <= {3'b000,sys_addr[9:0]};//列地址
+									sdr_ba <= sys_addr[24:23];//bank地址
+								end
+							`W_RD://读突发终止
+								begin
+									if(`end_rdburst)
+										begin
+											sdr_cke <= 1'b1;
+											sdr_cmd <= 4'b0110;
+										end
+									else
+										begin
+											sdr_cmd <= 4'b0111;
+											sdr_cke <= 1'b1;
+											sdr_a <= 13'h1fff;
+											sdr_ba <= 2'b11;
+										end
+								end
+							`W_WRITE://写操作
+								begin
+									sdr_cke <= 1'b1;
+									sdr_cmd <= 4'b0100;
+									sdr_a <= {3'b000,sys_addr[9:0]};//列地址
+									sdr_ba <= sys_addr[24:23];//bank地址
+								end
+						   `W_BT://写中断
+								begin
+									sdr_cmd <= 4'b0110;
+									sdr_cke <= 1'b1;
+								end
+							`W_PRE:
+								begin
+									sdr_cmd <= 4'b0010;
+									sdr_cke <= 1'b1;
+									sdr_a <= 13'h0000;
+									sdr_ba <= sys_addr[24:24];
+								end
+						  `W_AUTO_REF_PRE:
+								begin
+									sdr_cmd <= 4'b0010;
+									sdr_cke <= 1'b1;
+									sdr_a <= 13'h1fff;
+									sdr_ba <= 2'b11;
+								end
+						  `W_AUTO_REF1,`W_AUTO_REF2:
+								begin
+									sdr_cmd <= 4'b0001;
+									sdr_cke <= 1'b1;
+									sdr_a <= 13'h1fff;
+									sdr_ba <= 2'b11;
+								end
+							default:
+								begin
+									sdr_cmd <= 4'b0111;
+									sdr_cke <= 1'b1;
+									sdr_a <= 13'h1fff;
+									sdr_ba <= 2'b11;
+								end
+						endcase
+					end
+			default:
+				begin
+					sdr_cmd <= 4'b0111;
+					sdr_cke <= 1'b1;
+					sdr_a <= 13'h1fff;
+					sdr_ba <= 2'b11;
+				end
+							
+			endcase
+	end 
+
+endmodule 

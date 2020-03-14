@@ -1,0 +1,84 @@
+module sdr_test(
+	input clk_50m,//时钟
+	input rst_n,//复位，低有效
+	input [9:0] SW,
+	output reg wr_en,         //sdram 写使能
+	output reg [15:0] wr_data,//sdram 写数据
+	output reg rd_en,         //sdram 读使能
+	input sdr_init_done      //sdram 初始化完成标志
+	);   
+	reg sdr_init_done_d0;
+	reg sdr_init_done_d1;
+	reg [11:0] wr_cnt;//写操作计数器
+
+
+	
+	//****************************************************************************
+	/*
+		sdr_init_done是100mhz时钟输出
+	
+	*/
+	
+	//同步sdram初始化完成信号
+	always @ (posedge clk_50m or negedge rst_n)
+	begin
+		if(!rst_n)
+			begin
+				sdr_init_done_d0 <= 1'b0;
+				sdr_init_done_d1 <= 1'b0;
+			end
+		else
+			begin
+				sdr_init_done_d0 <= sdr_init_done;
+				sdr_init_done_d1 <= sdr_init_done_d0;
+			end
+	end	
+	
+	//sdram初始化完成后，写操作计数器开始计数
+	always @ (posedge clk_50m or negedge rst_n)
+	begin
+		if(!rst_n)
+			begin
+				wr_cnt <= 12'b0;
+			end
+		else if(sdr_init_done_d1 && wr_cnt <= 12'd2049)//wr_cnt = 0-2049
+			begin
+				wr_cnt <= wr_cnt + 1'b1;
+			end
+		else
+			wr_cnt <= wr_cnt;
+	end
+	
+	//sdram写端口fifo的写使能和写数据
+	//wr_data 1-1024
+	always @ (posedge clk_50m or negedge rst_n)
+	begin
+		if(!rst_n)
+			begin
+				wr_en <= 1'd0;
+				wr_data <= 15'd0;
+			end
+		else if(wr_cnt >= 12'd1 && wr_cnt <= 12'd2049)
+			begin
+				wr_en <= 1'd1;		//写使能拉高
+				wr_data <= {6'b0,SW};
+			end
+		else
+			begin
+				wr_en <= 1'd0;
+				wr_data <= 15'd0;
+			end
+	end
+	
+	//写完成后读操作
+	always @ (posedge clk_50m or negedge rst_n)
+	begin
+		if(!rst_n)
+			begin
+				rd_en <= 1'b0;
+			end
+		else if(wr_cnt > 12'd2049)//写数据完成
+			rd_en <= 1'b1;         //读使能拉高
+	end
+
+endmodule 

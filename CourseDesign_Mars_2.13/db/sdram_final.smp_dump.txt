@@ -1,0 +1,6 @@
+
+State Machine - |sdr_ctrl_top|Function_select:FUNCTION_SELECT|currentstate
+Name currentstate.IDLE currentstate.ST_MULT currentstate.ST_ADD 
+currentstate.IDLE 0 0 0 
+currentstate.ST_ADD 1 0 1 
+currentstate.ST_MULT 1 1 0 

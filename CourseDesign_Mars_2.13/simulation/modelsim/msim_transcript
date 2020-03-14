@@ -1,0 +1,144 @@
+# Reading D:/intelFPGA_lite/18.1/modelsim_ase/tcl/vsim/pref.tcl
+# do sdram_final_run_msim_gate_verilog.do
+# if {[file exists gate_work]} {
+# 	vdel -lib gate_work -all
+# }
+# vlib gate_work
+# vmap work gate_work
+# Model Technology ModelSim - Intel FPGA Edition vmap 10.5b Lib Mapping Utility 2016.10 Oct  5 2016
+# vmap work gate_work 
+# Copying D:/intelFPGA_lite/18.1/modelsim_ase/win32aloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# 
+# vlog -vlog01compat -work work +incdir+. {sdram_final.vo}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 15:16:07 on Feb 13,2020
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+." sdram_final.vo 
+# -- Compiling module sdr_ctrl_top
+# 
+# Top level modules:
+# 	sdr_ctrl_top
+# End time: 15:16:07 on Feb 13,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
+# vlog -vlog01compat -work work +incdir+F:/FPGA_Learning/Course\ Design/CourseDesign_Mars/CourseDesign_Mars_2.13 {F:/FPGA_Learning/Course Design/CourseDesign_Mars/CourseDesign_Mars_2.13/sdr_ctrl_top_tb.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 15:16:08 on Feb 13,2020
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+F:/FPGA_Learning/Course Design/CourseDesign_Mars/CourseDesign_Mars_2.13" F:/FPGA_Learning/Course Design/CourseDesign_Mars/CourseDesign_Mars_2.13/sdr_ctrl_top_tb.v 
+# -- Compiling module sdr_ctrl_top_tb
+# 
+# Top level modules:
+# 	sdr_ctrl_top_tb
+# End time: 15:16:08 on Feb 13,2020, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
+# vsim -t 1ps +transport_int_delays +transport_path_delays -L altera_ver -L altera_lnsim_ver -L cyclonev_ver -L lpm_ver -L sgate_ver -L cyclonev_hssi_ver -L altera_mf_ver -L cyclonev_pcie_hip_ver -L gate_work -L work -voptargs="+acc"  sdr_ctrl_top_tb
+# vsim -t 1ps "+transport_int_delays" "+transport_path_delays" -L altera_ver -L altera_lnsim_ver -L cyclonev_ver -L lpm_ver -L sgate_ver -L cyclonev_hssi_ver -L altera_mf_ver -L cyclonev_pcie_hip_ver -L gate_work -L work -voptargs=""+acc"" sdr_ctrl_top_tb 
+# Start time: 15:16:08 on Feb 13,2020
+# Loading work.sdr_ctrl_top_tb
+# Loading work.sdr_ctrl_top
+# Loading cyclonev_ver.cyclonev_io_obuf
+# Loading cyclonev_ver.cyclonev_io_ibuf
+# Loading cyclonev_ver.cyclonev_pll_refclk_select
+# Loading cyclonev_ver.cyclonev_fractional_pll
+# Loading cyclonev_ver.cyclonev_pll_reconfig
+# Loading cyclonev_ver.cyclonev_pll_output_counter
+# Loading cyclonev_ver.cyclonev_clkena
+# Loading cyclonev_ver.cyclonev_lcell_comb
+# Loading altera_ver.dffeas
+# Loading cyclonev_ver.cyclonev_ram_block
+# Loading sv_std.std
+# Loading altera_lnsim_ver.generic_m10k
+# Loading altera_lnsim_ver.altera_lnsim_functions
+# Loading altera_lnsim_ver.common_28nm_ram_block
+# Loading altera_lnsim_ver.common_28nm_ram_register
+# Loading altera_lnsim_ver.common_28nm_ram_pulse_generator
+# Loading altera_lnsim_ver.altera_pll_reconfig_tasks
+# Loading altera_lnsim_ver.generic_device_pll
+# Loading altera_lnsim_ver.altera_generic_pll_functions
+# Loading altera_lnsim_ver.generic_pll
+# ** Warning: (vsim-3017) sdram_final.vo(2591): [TFMPC] - Too few port connections. Expected 15, found 14.
+#    Time: 0 ps  Iteration: 0  Instance: /sdr_ctrl_top_tb/SDR_CTRL_TOP/\PLL|altpll_component|auto_generated|generic_pll1~PLL_REFCLK_SELECT  File: /build/swbuild/SJ/nightly/18.1std/625/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
+# ** Warning: (vsim-3722) sdram_final.vo(2591): [TFMPC] - Missing connection for port 'pllen'.
+# ** Warning: (vsim-3017) <protected>(<protected>): [TFMPC] - Too few port connections. Expected <protected>, found <protected>.
+#    Time: 0 ps  Iteration: 0  Protected: /sdr_ctrl_top_tb/SDR_CTRL_TOP/\PLL|altpll_component|auto_generated|generic_pll1~PLL_REFCLK_SELECT /cyclonev_pll_refclk_select_encrypted_inst/<protected> File: nofile
+# ** Warning: (vsim-3722) <protected>(<protected>): [TFMPC] - Missing connection for port '<protected>'.
+# ** Warning: (vsim-3017) sdram_final.vo(2618): [TFMPC] - Too few port connections. Expected 24, found 23.
+#    Time: 0 ps  Iteration: 0  Instance: /sdr_ctrl_top_tb/SDR_CTRL_TOP/\PLL|altpll_component|auto_generated|generic_pll1~FRACTIONAL_PLL  File: /build/swbuild/SJ/nightly/18.1std/625/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v
+# ** Warning: (vsim-3722) sdram_final.vo(2618): [TFMPC] - Missing connection for port 'vsspl'.
+# ** Warning: (vsim-3017) /build/swbuild/SJ/nightly/18.1std/625/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v(3492): [TFMPC] - Too few port connections. Expected 33, found 32.
+#    Time: 0 ps  Iteration: 0  Instance: /sdr_ctrl_top_tb/SDR_CTRL_TOP/\PLL|altpll_component|auto_generated|generic_pll1~PLL_RECONFIG /cyclonev_pll_reconfig_encrypted_inst File: nofile
+# ** Warning: (vsim-3722) /build/swbuild/SJ/nightly/18.1std/625/l64/work/modelsim/eda/sim_lib/cyclonev_atoms.v(3492): [TFMPC] - Missing connection for port 'mhi'.
+# ** Warning: (vsim-3015) <protected>(<protected>): [PCDPC] - Port size (<protected>) does not match connection size (<protected>) for <protected>.<protected>
+#    Time: 0 ps  Iteration: 0  Protected: /sdr_ctrl_top_tb/SDR_CTRL_TOP/\PLL|altpll_component|auto_generated|generic_pll1~PLL_RECONFIG /cyclonev_pll_reconfig_encrypted_inst/<protected> File: nofile
+# Loading altera_ver.PRIM_GDFF_LOW
+# ** Warning: Design size of 11589 statements exceeds ModelSim-Intel FPGA Starter Edition recommended capacity.
+# Expect performance to be adversely affected.
+# 
+# add wave *
+# view structure
+# .main_pane.structure.interior.cs.body.struct
+# view signals
+# .main_pane.objects.interior.cs.body.tree
+# run -all
+# 
+# Warning: por to CB BFM is not connected, internal por is used.
+# 
+# Info: =================================================
+# Info:           Generic PLL Summary
+# Info: =================================================
+# Time scale of (sdr_ctrl_top_tb.SDR_CTRL_TOP.\PLL|altpll_component|auto_generated|generic_pll1~FRACTIONAL_PLL .cyclonev_fractional_pll_encrypted_inst.<protected>.<protected>.inst_pll_phase_0.no_need_to_gen) is  1ps /  1ps
+# Info: hierarchical_name = sdr_ctrl_top_tb.SDR_CTRL_TOP.\PLL|altpll_component|auto_generated|generic_pll1~FRACTIONAL_PLL .cyclonev_fractional_pll_encrypted_inst.<protected>.<protected>.inst_pll_phase_0.no_need_to_gen
+# Info: reference_clock_frequency = 50.0 mhz
+# Info: output_clock_frequency = 300.0 mhz
+# Info: phase_shift = 0 ps
+# Info: duty_cycle = 50
+# Info: sim_additional_refclk_cycles_to_lock = 0
+# Info: output_clock_high_period = 1666.666667
+# Info: output_clock_low_period = 1666.666667
+# Info: =================================================
+# Info:           Generic PLL Summary
+# Info: =================================================
+# Time scale of (sdr_ctrl_top_tb.SDR_CTRL_TOP.\PLL|altpll_component|auto_generated|generic_pll1~FRACTIONAL_PLL .cyclonev_fractional_pll_encrypted_inst.<protected>.<protected>.inst_pll_phase_1.no_need_to_gen) is  1ps /  1ps
+# Info: hierarchical_name = sdr_ctrl_top_tb.SDR_CTRL_TOP.\PLL|altpll_component|auto_generated|generic_pll1~FRACTIONAL_PLL .cyclonev_fractional_pll_encrypted_inst.<protected>.<protected>.inst_pll_phase_1.no_need_to_gen
+# Info: reference_clock_frequency = 50.0 mhz
+# Info: output_clock_frequency = 300.0 mhz
+# Info: phase_shift = 416 ps
+# Info: duty_cycle = 50
+# Info: sim_additional_refclk_cycles_to_lock = 0
+# Info: output_clock_high_period = 1666.666667
+# Info: output_clock_low_period = 1666.666667
+# Info: =================================================
+# Info:           Generic PLL Summary
+# Info: =================================================
+# Time scale of (sdr_ctrl_top_tb.SDR_CTRL_TOP.\PLL|altpll_component|auto_generated|generic_pll1~FRACTIONAL_PLL .cyclonev_fractional_pll_encrypted_inst.<protected>.<protected>.inst_pll_phase_2.no_need_to_gen) is  1ps /  1ps
+# Info: hierarchical_name = sdr_ctrl_top_tb.SDR_CTRL_TOP.\PLL|altpll_component|auto_generated|generic_pll1~FRACTIONAL_PLL .cyclonev_fractional_pll_encrypted_inst.<protected>.<protected>.inst_pll_phase_2.no_need_to_gen
+# Info: reference_clock_frequency = 50.0 mhz
+# Info: output_clock_frequency = 300.0 mhz
+# Info: phase_shift = 832 ps
+# Info: duty_cycle = 50
+# Info: sim_additional_refclk_cycles_to_lock = 0
+# Info: output_clock_high_period = 1666.666667
+# Info: output_clock_low_period = 1666.666667
+# Info: =================================================
+# Info:           Generic PLL Summary
+# Info: =================================================
+# Time scale of (sdr_ctrl_top_tb.SDR_CTRL_TOP.\PLL|altpll_component|auto_generated|generic_pll1~FRACTIONAL_PLL .cyclonev_fractional_pll_encrypted_inst.<protected>.<protected>.inst_pll_phase_3.no_need_to_gen) is  1ps /  1ps
+# Info: hierarchical_name = sdr_ctrl_top_tb.SDR_CTRL_TOP.\PLL|altpll_component|auto_generated|generic_pll1~FRACTIONAL_PLL .cyclonev_fractional_pll_encrypted_inst.<protected>.<protected>.inst_pll_phase_3.no_need_to_gen
+# Info: reference_clock_frequency = 50.0 mhz
+# Info: output_clock_frequency = 300.0 mhz
+# Info: phase_shift = 1248 ps
+# Info: duty_cycle = 50
+# Info: sim_additional_refclk_cycles_to_lock = 0
+# Info: output_clock_high_period = 1666.666667
+# Info: output_clock_low_period = 1666.666667
+# 
+# Warning: por to CB BFM is not connected, internal por is used.
+# 
+# A time value could not be extracted from the current line
+# A time value could not be extracted from the current line
+# A time value could not be extracted from the current line
+# Break key hit
+# Simulation stop requested.
+# End time: 15:18:11 on Feb 13,2020, Elapsed time: 0:02:03
+# Errors: 0, Warnings: 10

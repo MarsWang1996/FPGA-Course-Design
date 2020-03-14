@@ -1,0 +1,22 @@
+transcript on
+if {[file exists rtl_work]} {
+	vdel -lib rtl_work -all
+}
+vlib rtl_work
+vmap work rtl_work
+
+vlog -vlog01compat -work work +incdir+G:/quartus/sdram_final/src {G:/quartus/sdram_final/src/sdr_top.v}
+vlog -vlog01compat -work work +incdir+G:/quartus/sdram_final/src {G:/quartus/sdram_final/src/sdr_test.v}
+vlog -vlog01compat -work work +incdir+G:/quartus/sdram_final/src {G:/quartus/sdram_final/src/sdr_fifo_ctrl.v}
+vlog -vlog01compat -work work +incdir+G:/quartus/sdram_final/src {G:/quartus/sdram_final/src/sdr_ctrl_top.v}
+vlog -vlog01compat -work work +incdir+G:/quartus/sdram_final/src {G:/quartus/sdram_final/src/sdr_controller.v}
+vlog -vlog01compat -work work +incdir+G:/quartus/sdram_final/src {G:/quartus/sdram_final/src/para.v}
+vlog -vlog01compat -work work +incdir+G:/quartus/sdram_final/src {G:/quartus/sdram_final/src/Bin2Dca.v}
+vlog -vlog01compat -work work +incdir+G:/quartus/sdram_final/ipcore {G:/quartus/sdram_final/ipcore/wr_fifo.v}
+vlog -vlog01compat -work work +incdir+G:/quartus/sdram_final/ipcore {G:/quartus/sdram_final/ipcore/rd_fifo.v}
+vlog -vlog01compat -work work +incdir+G:/quartus/sdram_final/ipcore {G:/quartus/sdram_final/ipcore/pll.v}
+vlog -vlog01compat -work work +incdir+G:/quartus/sdram_final/db {G:/quartus/sdram_final/db/pll_altpll.v}
+vlog -vlog01compat -work work +incdir+G:/quartus/sdram_final/src {G:/quartus/sdram_final/src/sdr_data.v}
+vlog -vlog01compat -work work +incdir+G:/quartus/sdram_final/src {G:/quartus/sdram_final/src/sdr_ctrl.v}
+vlog -vlog01compat -work work +incdir+G:/quartus/sdram_final/src {G:/quartus/sdram_final/src/sdr_cmd.v}
+

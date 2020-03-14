@@ -1,0 +1,1 @@
+Warning (10268): Verilog HDL information at Adder.v(12): always construct contains both blocking and non-blocking assignments File: F:/FPGA_Learning/Course Design/CourseDesign_Mars/CourseDesign_Mars_2.13/src/Adder.v Line: 12

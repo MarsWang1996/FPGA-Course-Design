@@ -1,0 +1,292 @@
+//sdam状态控制模块
+module sdr_ctrl(
+	input clk,
+	input rst_n,
+	
+	input 	 		sdr_wr_req,//sdram写请求
+	input 		   sdr_rd_req,//sdram读请求
+	output			sdr_wr_ack,//sdram写响应
+	output		   sdr_rd_ack,//sdram读响应
+	input [10:0]   sdr_wr_burst,//写入sdram的突发长度
+	input [10:0]   sdr_rd_burst,//从sdram读出的突发长度
+	output			sdr_init_done,
+	
+	output reg [4:0] init_state,//sdram 初始化状态
+	output reg [4:0] work_state,//sdram 工作状态
+	output reg [10:0] cnt_clk,//时钟计数器
+	output reg 			sdr_rd_wr//sdram读写控制信号，低为写，高为读
+	);
+	`include "para.v"
+	
+	//sdram初始化参数
+	localparam TRP_CLK 	= 11'd2;//预充电到激活20ns
+	localparam TRC_CLK 	= 11'd7;//刷新到刷新/激活到激活70ns
+	localparam TMRD_CLK	= 11'd2;//等待模式寄存器设置完成15ns
+	//sdram工作参数
+	localparam TRCD_CLK 	= 11'd2;//激活到读写的延迟20ns
+	localparam TCL_CLK	= 11'd2;//列潜伏期
+	localparam TDPL_CLK  = 11'd2;//输入数据到precharge时间	
+	
+	reg [14:0] cnt_200us;//上电稳定周期200us
+	reg [9:0] cnt_ref;//刷新计数器
+	reg sdr_ref_req;//刷新请求
+	reg cnt_rst_n;//央视计数器复位信号
+	reg [3:0] init_ar_cnt;//初始化过程自动刷新计数器
+	
+	wire done_200us;//上电后200us进入稳定
+	wire sdr_ref_ack;//自动刷新请求应答信号
+
+	
+	
+	//上电200us，sdram稳定，标志信号拉高
+	assign done_200us = (cnt_200us == 15'd20_000) ? 1'd1:1'd0;
+	
+	//sdram初始化完成
+	assign sdr_init_done = (init_state == `I_DONE)? 1'd1:1'd0;
+	
+	//sdram自动刷新应答请求
+	assign sdr_ref_ack = (work_state == `W_AUTO_REF_PRE)? 1'd1:1'd0;
+	
+	//写sdram响应
+	assign sdr_wr_ack = ((work_state == `W_TRCD) & (cnt_clk ==1)&(~sdr_rd_wr))|
+								(work_state == `W_WRITE)|
+							  ((work_state == `W_WD) &(cnt_clk <= sdr_wr_burst - 3))? 1'd1:1'd0;
+	//读sdram响应
+	assign sdr_rd_ack = (work_state == `W_RD) & (cnt_clk >= 1) & (cnt_clk <= sdr_rd_burst)? 1'd1:1'd0;
+	
+	//上电后计数200us，等待sdram稳定
+	always @ (posedge clk or negedge rst_n)
+	begin
+		if(!rst_n)
+			cnt_200us <= 15'd0;
+		else if(cnt_200us < 15'd20_000)
+			cnt_200us <= cnt_200us + 1'd1;
+		else
+			cnt_200us<= cnt_200us;
+	end
+	
+//刷新计数器64/2^13=7812ns 7812bs/10ns=781CLK
+	always @ (posedge clk or negedge rst_n)
+	begin
+		if(!rst_n)
+			cnt_ref <= 10'd0;
+		else if(cnt_ref < 10'd781)
+			cnt_ref <= cnt_ref + 1'd1;
+		else
+			cnt_ref<= 10'd0;
+	end
+	
+//sdram刷新请求
+	always @ (posedge clk or negedge rst_n )
+	begin
+		if(!rst_n)
+			sdr_ref_req <= 1'd0;
+		else if(cnt_ref == 10'd780)//刷新计数器到达781时，刷新请求拉高
+			sdr_ref_req <= 1'd1;
+		else if(sdr_ref_ack)
+			sdr_ref_req <= 1'd0;
+	end
+	
+	//延时计数器对时钟计数
+	always @ (posedge clk or negedge rst_n )
+	begin
+		if(!rst_n)
+			begin
+				cnt_clk <= 11'd0;
+			end
+		else if(!cnt_rst_n)//计数器清零
+			cnt_clk <= 11'd0;
+		else
+			cnt_clk <= cnt_clk + 1'd1;	
+	end
+	//初始化过程对自动刷新计数器计数
+	//sdram在初始化过程至少刷新8次
+	always @ (posedge clk or negedge rst_n )
+	begin
+		if(!rst_n)
+			begin
+				init_ar_cnt <= 4'd0;
+			end
+		else if(init_state == `I_NOP)
+			begin
+				init_ar_cnt <= 4'd0;
+			end
+		else if (init_state == `I_AUTO_REF)
+			begin
+				init_ar_cnt <=init_ar_cnt + 1'd1;
+			end
+		else
+			begin
+				init_ar_cnt <= init_ar_cnt;
+			end
+	end
+	//sdram初始化状态机
+	always @ (posedge clk or negedge rst_n)
+	begin
+		if(!rst_n)
+			begin
+				init_state <= `I_NOP;
+			end
+		else
+			case(init_state)
+				`I_NOP :			init_state <= done_200us ?`I_PRE:`I_NOP;//上电复位200us后进入稳定
+				`I_PRE :			init_state <= `I_TRP ;//预充电状态				
+				`I_TRP :			init_state <= (`end_trp) ? `I_AUTO_REF : `I_TRP;//预充电等待tRP_CLK
+				`I_AUTO_REF:	init_state <= `I_TRC;//自动刷新
+				`I_TRC:			init_state <= (`end_trc)?
+											//等待自动刷新结束 TRC_CLK											  
+											((init_ar_cnt == 4'd8) ? `I_MRS : `I_AUTO_REF):`I_TRC;//连续8次自动刷新
+				`I_MRS:			init_state <= `I_TMRD;//模式寄存器设置
+				`I_TMRD:			init_state <= (`end_tmrd) ? `I_DONE : `I_TMRD;//等待模式寄存器设置完成			
+				`I_DONE:			init_state <= `I_DONE;//sdram初始化完成			
+				default:       init_state <= `I_NOP;
+			endcase	
+	end
+	//sdram工作状态机
+	always @ (posedge clk or negedge rst_n )
+	begin
+		if(!rst_n)
+			work_state <= `W_IDLE;
+		else
+			case(work_state)
+				`W_IDLE:
+					begin
+						if(sdr_ref_req & sdr_init_done)//刷新
+							begin
+								work_state <= `W_AUTO_REF_PRE;
+								sdr_rd_wr <= 1'd1;
+							end
+						else if(sdr_wr_req & sdr_init_done)//写						
+						begin
+							work_state <= `W_ACTIVE;
+							sdr_rd_wr <= 1'd0;
+							end
+						else if(sdr_rd_req & sdr_init_done)//读						
+						begin
+								work_state <= `W_ACTIVE;
+								sdr_rd_wr <= 1'd1;
+							end
+						else 						
+						begin
+								work_state <= `W_IDLE;
+								sdr_rd_wr <= 1'd1;
+							end
+					end
+				`W_ACTIVE://激活					
+				begin
+						work_state <= `W_TRCD;
+					end
+				`W_TRCD://激活等待					
+				begin
+						if(`end_trcd)
+							begin
+								if(sdr_rd_wr)//读							
+								work_state <= `W_READ;
+								else//写									
+								work_state <= `W_WRITE;
+							end
+						else	
+							work_state <= `W_TRCD;
+					end
+				`W_READ://读					
+				begin
+						work_state <= `W_RD;
+					end
+				`W_RD://读数据				
+				begin
+						work_state <= (`end_tread) ? `W_PRE:`W_RD;
+					end
+				`W_WRITE://写					
+				begin
+						work_state <= `W_WD;
+					end
+				`W_WD://写数据					
+				begin
+						work_state <= (`end_twrite) ? `W_BT:`W_WD;
+					end
+				`W_BT://写bt					
+				begin
+						work_state <= `W_PRE ;
+				end
+				`W_PRE:
+				begin
+					work_state <= `W_TRP;
+				end
+				`W_TRP:
+				begin
+					work_state <= (`end_trp) ? `W_IDLE:`W_TRP;
+				end
+				`W_AUTO_REF_PRE://刷新：预充电			
+				begin
+						work_state <= `W_AUTO_REF_TRP;
+					end
+				`W_AUTO_REF_TRP://预充电等待		
+				begin
+						work_state <= (`end_trp) ? `W_AUTO_REF1:`W_AUTO_REF_TRP;
+					end
+				`W_AUTO_REF1://刷新1	
+					begin
+						work_state <= `W_TRC1;
+					end
+				`W_TRC1://刷新1等待
+					begin
+						work_state <= (`end_trc)?`W_AUTO_REF2:`W_TRC1;
+					end
+				`W_AUTO_REF2://刷新2
+					begin
+						work_state <= `W_TRC2;
+					end
+				`W_TRC2://刷新等待
+					begin
+						work_state <= (`end_trc)?`W_IDLE:`W_TRC2;
+					end
+				default:
+					begin
+						work_state <= `W_IDLE;
+					end
+			endcase	
+	end
+	//璁℃暟鍣ㄦ帶鍒堕€昏緫
+	always @ (posedge clk or negedge rst_n)
+	begin
+		if(!rst_n)
+			cnt_rst_n <= 1'b0;
+		else
+			begin
+				case(init_state)
+					`I_NOP:			cnt_rst_n <= 1'b0;
+					`I_PRE:			cnt_rst_n <= 1'd1;
+					`I_TRP:  		cnt_rst_n <=  (`end_trp) ? 1'd0:1'd1;
+					`I_AUTO_REF: 	cnt_rst_n <= 1'd1;
+					`I_TRC:   		cnt_rst_n<= (`end_trc) ? 1'd0:1'd1;
+					`I_MRS:        cnt_rst_n<= 1'd1;
+					`I_TMRD:       cnt_rst_n<= (`end_tmrd)?1'd0:1'd1;
+					`I_DONE:
+						begin
+							case(work_state)
+								`W_IDLE:				cnt_rst_n<= 1'd0;
+								`W_ACTIVE:			cnt_rst_n<= 1'd1;
+								`W_TRCD:   		   cnt_rst_n<= (`end_trcd) ? 1'd0 : 1'd1;
+								`W_READ:    		cnt_rst_n<= 1'd1;
+								`W_RD:      		cnt_rst_n<= (`end_tread)? 1'd0 : 1'd1;
+								`W_WRITE:  			cnt_rst_n<= 1'd1;
+								`W_WD:      		cnt_rst_n<= (`end_twrite) ? 1'd0 : 1'd1;
+								`W_PRE:				cnt_rst_n <= 1'd1;
+								`W_TRP:				cnt_rst_n <= (`end_trp) ? 1'd0:1'd1;
+								
+								`W_AUTO_REF_PRE:	cnt_rst_n <= 1'd1;
+								`W_AUTO_REF_TRP:  cnt_rst_n<= (`end_trp)?1'd0:1'd1;
+								`W_AUTO_REF1:		cnt_rst_n <= 1'd1;
+								`W_TRC1:				cnt_rst_n<= (`end_trc)?1'd0:1'd1;
+								`W_AUTO_REF2:     cnt_rst_n <= 1'd1;
+								`W_TRC2:     		cnt_rst_n<= (`end_trc)?1'd0:1'd1;
+								default:    cnt_rst_n <= 1'd0;	
+							endcase
+						end
+					default: 		cnt_rst_n <= 1'd0;
+				endcase
+			end
+	end
+
+
+endmodule 

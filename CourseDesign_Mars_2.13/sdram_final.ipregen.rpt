@@ -1,0 +1,80 @@
+IP Upgrade report for sdram_final
+Fri Dec 20 09:29:58 2019
+Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. IP Upgrade Summary
+  3. Successfully Upgraded IP Components
+  4. IP Upgrade Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2018  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details.
+
+
+
++--------------------------------------------------------------------------------+
+; IP Upgrade Summary                                                             ;
++------------------------------+-------------------------------------------------+
+; IP Components Upgrade Status ; Passed - Fri Dec 20 09:29:58 2019               ;
+; Quartus Prime Version        ; 18.1.0 Build 625 09/12/2018 SJ Standard Edition ;
+; Revision Name                ; sdram_final                                     ;
+; Top-level Entity Name        ; sdr_ctrl_top                                    ;
+; Family                       ; Cyclone V                                       ;
++------------------------------+-------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------+
+; Successfully Upgraded IP Components                                                                                 ;
++-------------+----------------+---------+----------------------+----------------------+--------------------+---------+
+; Entity Name ; Component Name ; Version ; Original Source File ; Generation File Path ; New Source File    ; Message ;
++-------------+----------------+---------+----------------------+----------------------+--------------------+---------+
+; wr_fifo     ; FIFO           ; 13.0    ; ipcore/wr_fifo.qip   ; ipcore/wr_fifo.v     ; ipcore/wr_fifo.qip ;         ;
+; sdr_pll     ; ALTPLL         ; 13.0    ; ipcore/sdr_pll.qip   ; ipcore/sdr_pll.v     ; ipcore/sdr_pll.qip ;         ;
+; rd_fifo     ; FIFO           ; 13.0    ; ipcore/rd_fifo.qip   ; ipcore/rd_fifo.v     ; ipcore/rd_fifo.qip ;         ;
+; pll         ; ALTPLL         ; 13.0    ; ipcore/pll.qip       ; ipcore/pll.v         ; ipcore/pll.qip     ;         ;
++-------------+----------------+---------+----------------------+----------------------+--------------------+---------+
+
+
++---------------------+
+; IP Upgrade Messages ;
++---------------------+
+Info (11902): Backing up file "ipcore/wr_fifo.v" to "ipcore/wr_fifo.BAK.v"
+Info (11837): Started upgrading IP component FIFO with file "ipcore/wr_fifo.v"
+Info (11902): Backing up file "ipcore/sdr_pll.v" to "ipcore/sdr_pll.BAK.v"
+Info (11837): Started upgrading IP component ALTPLL with file "ipcore/sdr_pll.v"
+Info (11902): Backing up file "ipcore/rd_fifo.v" to "ipcore/rd_fifo.BAK.v"
+Info (11837): Started upgrading IP component FIFO with file "ipcore/rd_fifo.v"
+Info (11902): Backing up file "ipcore/pll.v" to "ipcore/pll.BAK.v"
+Info (11837): Started upgrading IP component ALTPLL with file "ipcore/pll.v"
+Info (11131): Completed upgrading IP component FIFO with file "ipcore/wr_fifo.v"
+Info (11131): Completed upgrading IP component ALTPLL with file "ipcore/sdr_pll.v"
+Info (11131): Completed upgrading IP component FIFO with file "ipcore/rd_fifo.v"
+Info (11131): Completed upgrading IP component ALTPLL with file "ipcore/pll.v"
+Info (23030): Evaluation of Tcl script d:/intelfpga/18.1/quartus/common/tcl/internal/ip_regen/ip_regen.tcl was successful
+Info: Quartus Prime Shell was successful. 0 errors, 0 warnings
+    Info: Peak virtual memory: 4862 megabytes
+    Info: Processing ended: Fri Dec 20 09:29:58 2019
+    Info: Elapsed time: 00:00:12
+    Info: Total CPU time (on all processors): 00:00:17
+
+

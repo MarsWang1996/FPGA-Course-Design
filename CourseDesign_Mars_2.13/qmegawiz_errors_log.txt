@@ -1,0 +1,55 @@
+
+
+F:/FPGA_Learning/Course Design/sdram_final/ipcore/pll.v
+
+Feb 02 01PM:03:04>: Error in CNX file format.
+
+Error messages are listed in file
+F:/FPGA_Learning/Course Design/sdram_final/ipcore/pll.cnxerr.
+
+Can't create the custom megafunction variation file(s)
+
+F:/FPGA_Learning/Course Design/sdram_final/ipcore/pll.v
+
+Feb 02 01PM:03:08>: Error in CNX file format.
+
+Error messages are listed in file
+F:/FPGA_Learning/Course Design/sdram_final/ipcore/pll.cnxerr.
+
+Can't create the custom megafunction variation file(s)
+
+F:/FPGA_Learning/Course Design/sdram_final/ipcore/pll.v
+
+Feb 02 01PM:03:20>: Error in CNX file format.
+
+Error messages are listed in file
+F:/FPGA_Learning/Course Design/sdram_final/ipcore/pll.cnxerr.
+
+Can't create the custom megafunction variation file(s)
+
+F:/FPGA_Learning/Course Design/sdram_final/ipcore/pll.v
+
+Feb 02 01PM:03:29>: Error in CNX file format.
+
+Error messages are listed in file
+F:/FPGA_Learning/Course Design/sdram_final/ipcore/pll.cnxerr.
+
+Can't create the custom megafunction variation file(s)
+
+F:/FPGA_Learning/Course Design/sdram_final/ipcore/pll.v
+
+Feb 02 01PM:06:41>: Error in CNX file format.
+
+Error messages are listed in file
+F:/FPGA_Learning/Course Design/sdram_final/ipcore/pll.cnxerr.
+
+Can't create the custom megafunction variation file(s)
+
+F:/FPGA_Learning/Course Design/CourseDesign_Mars/CourseDesign_Mars_2.13/ipcore/pll.v
+
+Feb 29 08PM:27:36>: Error in CNX file format.
+
+Error messages are listed in file
+F:/FPGA_Learning/Course Design/CourseDesign_Mars/CourseDesign_Mars_2.13/ipcore/pll.cnxerr.
+
+Can't create the custom megafunction variation file(s)

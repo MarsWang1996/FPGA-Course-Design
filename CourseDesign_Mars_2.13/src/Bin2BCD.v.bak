@@ -1,0 +1,129 @@
+/*二进制转十进制BCD码*/
+module Bin2BCD_1(clk,bin,rst_n,HEX5,HEX4);
+
+input  [9:0] bin;
+input        clk,rst_n;
+output [6:0] HEX5,HEX4;
+
+reg    [3:0] one,ten,hun;
+reg    [1:0] tho;
+reg    [3:0] count;
+reg    [23:0]shift_reg=23'd0;
+
+	always @ ( posedge clk or negedge rst_n )
+		begin
+			if(!rst_n) 
+				count<=0;
+			else if (count==12)
+				count<=0;
+			else
+			count<=count+1;
+		end
+
+	always @ (posedge clk or negedge rst_n )
+		begin
+			if (!rst_n)
+					shift_reg=0;
+			else if (count==0)
+					shift_reg={14'b00000000000000,bin[9:5]};
+			else if ( count<=10)                
+				begin
+						if(shift_reg[13:10]>=5)           
+							 begin
+									if(shift_reg[17:14]>=5)   
+										begin   
+											if(shift_reg[21:18]>=5) 
+												begin
+													shift_reg[21:18]=shift_reg[21:18]+2'b11;
+													shift_reg[17:14]=shift_reg[17:14]+2'b11;      
+													shift_reg[13:10]=shift_reg[13:10]+2'b11;
+													shift_reg=shift_reg<<1;
+												end
+											else
+												begin
+													shift_reg[21:18]=shift_reg[21:18];
+													shift_reg[17:14]=shift_reg[17:14]+2'b11;      
+													shift_reg[13:10]=shift_reg[13:10]+2'b11;
+													shift_reg=shift_reg<<1;
+												end
+										end
+									else       
+										begin   
+											if(shift_reg[21:18]>=5) 
+												begin
+													shift_reg[21:18]=shift_reg[21:18]+2'b11;
+													shift_reg[17:14]=shift_reg[17:14];      
+													shift_reg[13:10]=shift_reg[13:10]+2'b11;
+													shift_reg=shift_reg<<1;
+												end
+											else
+												begin
+													shift_reg[21:18]=shift_reg[21:18];
+													shift_reg[17:14]=shift_reg[17:14];      
+													shift_reg[13:10]=shift_reg[13:10]+2'b11;
+													shift_reg=shift_reg<<1;
+												end
+										end
+							end              
+						else
+							begin
+									if(shift_reg[17:14]>=5)   
+										begin   
+											if(shift_reg[21:18]>=5) 
+												begin
+													shift_reg[21:18]=shift_reg[21:18]+2'b11;
+													shift_reg[17:14]=shift_reg[17:14]+2'b11;
+													shift_reg[13:10]=shift_reg[13:10];      
+													shift_reg=shift_reg<<1;
+												end
+											else
+												begin
+													shift_reg[21:18]=shift_reg[21:18];
+													shift_reg[17:14]=shift_reg[17:14]+2'b11;
+													shift_reg[13:10]=shift_reg[13:10];      
+													shift_reg=shift_reg<<1;
+												end
+										end
+									else       
+										begin   
+											if(shift_reg[21:18]>=5) 
+												begin
+													shift_reg[21:18]=shift_reg[21:18]+2'b11;
+													shift_reg[17:14]=shift_reg[17:14];
+													shift_reg[13:10]=shift_reg[13:10];      
+													shift_reg=shift_reg<<1;
+												end
+											else
+												begin
+													shift_reg[21:18]=shift_reg[21:18];
+													shift_reg[17:14]=shift_reg[17:14];
+													shift_reg[13:10]=shift_reg[13:10];     
+													shift_reg=shift_reg<<1;
+												end
+										end
+							end                
+				end
+		end
+
+	always @ ( posedge clk or negedge rst_n )
+		begin
+			if (!rst_n)
+				begin
+						one<=0;
+						ten<=0;
+						hun<=0;
+						tho<=0; 
+				end
+			else if (count==11)  
+				begin
+						one<=shift_reg[13:10];
+						ten<=shift_reg[17:14];
+						hun<=shift_reg[21:18];
+						tho<=shift_reg[23:22]; 
+				end
+		end
+	
+	Seg u1(.clk(clk),.rst_n(rst_n),.in(one),.out(HEX4));
+	Seg u2(.clk(clk),.rst_n(rst_n),.in(ten),.out(HEX5));
+
+endmodule

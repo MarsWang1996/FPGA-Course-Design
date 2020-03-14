@@ -1,0 +1,261 @@
+# -------------------------------------------------------------------------- #
+#
+# Copyright (C) 2018  Intel Corporation. All rights reserved.
+# Your use of Intel Corporation's design tools, logic functions 
+# and other software and tools, and its AMPP partner logic 
+# functions, and any output files from any of the foregoing 
+# (including device programming or simulation files), and any 
+# associated documentation or information are expressly subject 
+# to the terms and conditions of the Intel Program License 
+# Subscription Agreement, the Intel Quartus Prime License Agreement,
+# the Intel FPGA IP License Agreement, or other applicable license
+# agreement, including, without limitation, that your use is for
+# the sole purpose of programming logic devices manufactured by
+# Intel and sold by Intel or its authorized distributors.  Please
+# refer to the applicable agreement for further details.
+#
+# -------------------------------------------------------------------------- #
+#
+# Quartus Prime
+# Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
+# Date created = 09:15:19  December 20, 2019
+#
+# -------------------------------------------------------------------------- #
+#
+# Notes:
+#
+# 1) The default values for assignments are stored in the file:
+#		sdram_final_assignment_defaults.qdf
+#    If this file doesn't exist, see file:
+#		assignment_defaults.qdf
+#
+# 2) Altera recommends that you do not modify this file. This
+#    file is updated automatically by the Quartus Prime software
+#    and any changes you make may be lost or overwritten.
+#
+# -------------------------------------------------------------------------- #
+
+
+set_global_assignment -name FAMILY "Cyclone V"
+set_global_assignment -name DEVICE 5CSEMA5F31C6
+set_global_assignment -name TOP_LEVEL_ENTITY sdr_ctrl_top
+set_global_assignment -name ORIGINAL_QUARTUS_VERSION 18.1.0
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "09:15:19  DECEMBER 20, 2019"
+set_global_assignment -name LAST_QUARTUS_VERSION "18.1.0 Standard Edition"
+set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
+set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
+set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
+set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR 256
+set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
+set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_location_assignment PIN_AC30 -to HEX2[6]
+set_location_assignment PIN_AC29 -to HEX2[5]
+set_location_assignment PIN_AD30 -to HEX2[4]
+set_location_assignment PIN_AC28 -to HEX2[3]
+set_location_assignment PIN_AD29 -to HEX2[2]
+set_location_assignment PIN_AE29 -to HEX2[1]
+set_location_assignment PIN_AB23 -to HEX2[0]
+set_location_assignment PIN_AB22 -to HEX3[6]
+set_location_assignment PIN_AB25 -to HEX3[5]
+set_location_assignment PIN_AB28 -to HEX3[4]
+set_location_assignment PIN_AC25 -to HEX3[3]
+set_location_assignment PIN_AD25 -to HEX3[2]
+set_location_assignment PIN_AC27 -to HEX3[1]
+set_location_assignment PIN_AD26 -to HEX3[0]
+set_location_assignment PIN_W25 -to HEX4[6]
+set_location_assignment PIN_V23 -to HEX4[5]
+set_location_assignment PIN_W24 -to HEX4[4]
+set_location_assignment PIN_W22 -to HEX4[3]
+set_location_assignment PIN_Y24 -to HEX4[2]
+set_location_assignment PIN_Y23 -to HEX4[1]
+set_location_assignment PIN_AA24 -to HEX4[0]
+set_location_assignment PIN_AA25 -to HEX5[6]
+set_location_assignment PIN_AA26 -to HEX5[5]
+set_location_assignment PIN_AB26 -to HEX5[4]
+set_location_assignment PIN_AB27 -to HEX5[3]
+set_location_assignment PIN_Y27 -to HEX5[2]
+set_location_assignment PIN_AA28 -to HEX5[1]
+set_location_assignment PIN_V25 -to HEX5[0]
+set_location_assignment PIN_AA15 -to KEY
+set_location_assignment PIN_Y21 -to LEDR[9]
+set_location_assignment PIN_W21 -to LEDR[8]
+set_location_assignment PIN_W20 -to LEDR[7]
+set_location_assignment PIN_Y19 -to LEDR[6]
+set_location_assignment PIN_W19 -to LEDR[5]
+set_location_assignment PIN_W17 -to LEDR[4]
+set_location_assignment PIN_V18 -to LEDR[3]
+set_location_assignment PIN_V17 -to LEDR[2]
+set_location_assignment PIN_W16 -to LEDR[1]
+set_location_assignment PIN_V16 -to LEDR[0]
+set_location_assignment PIN_AE12 -to SW[9]
+set_location_assignment PIN_AD10 -to SW[8]
+set_location_assignment PIN_AC9 -to SW[7]
+set_location_assignment PIN_AE11 -to SW[6]
+set_location_assignment PIN_AD12 -to SW[5]
+set_location_assignment PIN_AD11 -to SW[4]
+set_location_assignment PIN_AF10 -to SW[3]
+set_location_assignment PIN_AF9 -to SW[2]
+set_location_assignment PIN_AC12 -to SW[1]
+set_location_assignment PIN_AB12 -to SW[0]
+set_location_assignment PIN_AJ14 -to sdr_a[12]
+set_location_assignment PIN_AH13 -to sdr_a[11]
+set_location_assignment PIN_AG12 -to sdr_a[10]
+set_location_assignment PIN_AG13 -to sdr_a[9]
+set_location_assignment PIN_AH15 -to sdr_a[8]
+set_location_assignment PIN_AF15 -to sdr_a[7]
+set_location_assignment PIN_AD14 -to sdr_a[6]
+set_location_assignment PIN_AC14 -to sdr_a[5]
+set_location_assignment PIN_AB15 -to sdr_a[4]
+set_location_assignment PIN_AE14 -to sdr_a[3]
+set_location_assignment PIN_AG15 -to sdr_a[2]
+set_location_assignment PIN_AH14 -to sdr_a[1]
+set_location_assignment PIN_AK14 -to sdr_a[0]
+set_location_assignment PIN_AJ12 -to sdr_ba[1]
+set_location_assignment PIN_AF13 -to sdr_ba[0]
+set_location_assignment PIN_AF11 -to sdr_cas_n
+set_location_assignment PIN_AK13 -to sdr_cke
+set_location_assignment PIN_AH12 -to sdr_clk
+set_location_assignment PIN_AG11 -to sdr_cs_n
+set_location_assignment PIN_AJ5 -to sdr_dq[15]
+set_location_assignment PIN_AJ6 -to sdr_dq[14]
+set_location_assignment PIN_AH7 -to sdr_dq[13]
+set_location_assignment PIN_AH8 -to sdr_dq[12]
+set_location_assignment PIN_AH9 -to sdr_dq[11]
+set_location_assignment PIN_AJ9 -to sdr_dq[10]
+set_location_assignment PIN_AJ10 -to sdr_dq[9]
+set_location_assignment PIN_AH10 -to sdr_dq[8]
+set_location_assignment PIN_AJ11 -to sdr_dq[7]
+set_location_assignment PIN_AK11 -to sdr_dq[6]
+set_location_assignment PIN_AG10 -to sdr_dq[5]
+set_location_assignment PIN_AK9 -to sdr_dq[4]
+set_location_assignment PIN_AK8 -to sdr_dq[3]
+set_location_assignment PIN_AK7 -to sdr_dq[2]
+set_location_assignment PIN_AJ7 -to sdr_dq[1]
+set_location_assignment PIN_AK6 -to sdr_dq[0]
+set_location_assignment PIN_AK12 -to sdr_dqm[1]
+set_location_assignment PIN_AB13 -to sdr_dqm[0]
+set_location_assignment PIN_AE13 -to sdr_ras_n
+set_location_assignment PIN_W15 -to sdr_rd_valid
+set_location_assignment PIN_AA13 -to sdr_we_n
+set_location_assignment PIN_AF14 -to sys_clk
+set_location_assignment PIN_AA14 -to sys_rst_n
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX2[6]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX2[5]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX2[4]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX2[3]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX2[2]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX2[1]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX2[0]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX3[6]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX3[5]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX3[4]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX3[3]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX3[2]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX3[1]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX3[0]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX4[6]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX4[5]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX4[4]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX4[3]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX4[2]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX4[1]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX4[0]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX5[6]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX5[5]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX5[4]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX5[3]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX5[2]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX5[1]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX5[0]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to KEY
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LEDR[9]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LEDR[8]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LEDR[7]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LEDR[6]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LEDR[5]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LEDR[4]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LEDR[3]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LEDR[2]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LEDR[1]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LEDR[0]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SW[9]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SW[8]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SW[7]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SW[6]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SW[5]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SW[4]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SW[3]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SW[2]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SW[1]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SW[0]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sdr_a[12]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sdr_a[11]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sdr_a[10]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sdr_a[9]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sdr_a[8]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sdr_a[7]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sdr_a[6]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sdr_a[5]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sdr_a[4]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sdr_a[3]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sdr_a[2]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sdr_a[1]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sdr_a[0]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sdr_ba[1]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sdr_ba[0]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sdr_cas_n
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sdr_cke
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sdr_clk
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sdr_cs_n
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sdr_dq[15]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sdr_dq[14]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sdr_dq[13]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sdr_dq[12]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sdr_dq[11]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sdr_dq[10]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sdr_dq[9]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sdr_dq[8]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sdr_dq[7]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sdr_dq[6]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sdr_dq[5]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sdr_dq[4]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sdr_dq[3]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sdr_dq[2]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sdr_dq[1]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sdr_dq[0]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sdr_dqm[1]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sdr_dqm[0]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sdr_ras_n
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sdr_rd_valid
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sdr_we_n
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sys_clk
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to sys_rst_n
+set_global_assignment -name EDA_SIMULATION_TOOL "ModelSim-Altera (Verilog)"
+set_global_assignment -name EDA_OUTPUT_DATA_FORMAT "VERILOG HDL" -section_id eda_simulation
+set_global_assignment -name EDA_TIME_SCALE "1 ps" -section_id eda_simulation
+set_global_assignment -name EDA_TEST_BENCH_ENABLE_STATUS TEST_BENCH_MODE -section_id eda_simulation
+set_global_assignment -name EDA_NATIVELINK_SIMULATION_TEST_BENCH sdr_ctrl_top_tb -section_id eda_simulation
+set_global_assignment -name EDA_TEST_BENCH_NAME sdr_ctrl_top_tb -section_id eda_simulation
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id sdr_ctrl_top_tb
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME sdr_ctrl_top_tb -section_id sdr_ctrl_top_tb
+set_global_assignment -name EDA_TEST_BENCH_FILE sdr_ctrl_top_tb.v -section_id sdr_ctrl_top_tb
+set_global_assignment -name VERILOG_FILE src/Bin2BCD.v
+set_global_assignment -name VERILOG_FILE sdr_ctrl_top_tb.v
+set_global_assignment -name VERILOG_FILE src/sdr_top.v
+set_global_assignment -name VERILOG_FILE src/sdr_test.v
+set_global_assignment -name VERILOG_FILE src/sdr_fifo_ctrl.v
+set_global_assignment -name VERILOG_FILE src/sdr_data.v
+set_global_assignment -name VERILOG_FILE src/sdr_ctrl_top.v
+set_global_assignment -name VERILOG_FILE src/sdr_ctrl.v
+set_global_assignment -name VERILOG_FILE src/sdr_controller.v
+set_global_assignment -name VERILOG_FILE src/sdr_cmd.v
+set_global_assignment -name VERILOG_FILE src/para.v
+set_global_assignment -name QIP_FILE ipcore/wr_fifo.qip
+set_global_assignment -name QIP_FILE ipcore/sdr_pll.qip
+set_global_assignment -name QIP_FILE ipcore/rd_fifo.qip
+set_global_assignment -name QIP_FILE ipcore/pll.qip
+set_global_assignment -name VERILOG_FILE src/Seg.v
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

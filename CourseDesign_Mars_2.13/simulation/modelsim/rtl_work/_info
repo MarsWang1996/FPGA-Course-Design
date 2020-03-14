@@ -1,0 +1,345 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dF:/FPGA_Learning/Course Design/CourseDesign_Mars/CourseDesign_Mars_2.13/simulation/modelsim
+vBin2BCD
+Z1 !s110 1581577448
+!i10b 1
+!s100 ^jg>e51nGa=MP>ERT>TPf1
+I[g4oNoz>45?_9Uh03?f=a3
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+R0
+w1581576437
+8F:/FPGA_Learning/Course Design/CourseDesign_Mars/CourseDesign_Mars_2.13/src/Bin2BCD.v
+FF:/FPGA_Learning/Course Design/CourseDesign_Mars/CourseDesign_Mars_2.13/src/Bin2BCD.v
+L0 2
+Z3 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z4 !s108 1581577448.000000
+!s107 F:/FPGA_Learning/Course Design/CourseDesign_Mars/CourseDesign_Mars_2.13/src/Bin2BCD.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+F:/FPGA_Learning/Course Design/CourseDesign_Mars/CourseDesign_Mars_2.13/src|F:/FPGA_Learning/Course Design/CourseDesign_Mars/CourseDesign_Mars_2.13/src/Bin2BCD.v|
+!i113 1
+Z5 o-vlog01compat -work work
+Z6 !s92 -vlog01compat -work work {+incdir+F:/FPGA_Learning/Course Design/CourseDesign_Mars/CourseDesign_Mars_2.13/src}
+Z7 tCvgOpt 0
+n@bin2@b@c@d
+vpll
+Z8 !s110 1581577450
+!i10b 1
+!s100 @>ifEZ@I6B8QE4NgH7anW3
+ISF@WO5je2N?g`5;AAl=EV1
+R2
+R0
+w1576805398
+8F:/FPGA_Learning/Course Design/CourseDesign_Mars/CourseDesign_Mars_2.13/ipcore/pll.v
+FF:/FPGA_Learning/Course Design/CourseDesign_Mars/CourseDesign_Mars_2.13/ipcore/pll.v
+Z9 L0 39
+R3
+r1
+!s85 0
+31
+Z10 !s108 1581577450.000000
+!s107 F:/FPGA_Learning/Course Design/CourseDesign_Mars/CourseDesign_Mars_2.13/ipcore/pll.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+F:/FPGA_Learning/Course Design/CourseDesign_Mars/CourseDesign_Mars_2.13/ipcore|F:/FPGA_Learning/Course Design/CourseDesign_Mars/CourseDesign_Mars_2.13/ipcore/pll.v|
+!i113 1
+R5
+Z11 !s92 -vlog01compat -work work {+incdir+F:/FPGA_Learning/Course Design/CourseDesign_Mars/CourseDesign_Mars_2.13/ipcore}
+R7
+vpll_altpll
+Z12 !s110 1581577451
+!i10b 1
+!s100 RP<:PccWeoAmX6B0R^9H^1
+ImKlhod@9c`cZe?Gh`EA^>3
+R2
+R0
+w1576804724
+8F:/FPGA_Learning/Course Design/CourseDesign_Mars/CourseDesign_Mars_2.13/db/pll_altpll.v
+FF:/FPGA_Learning/Course Design/CourseDesign_Mars/CourseDesign_Mars_2.13/db/pll_altpll.v
+L0 29
+R3
+r1
+!s85 0
+31
+Z13 !s108 1581577451.000000
+!s107 F:/FPGA_Learning/Course Design/CourseDesign_Mars/CourseDesign_Mars_2.13/db/pll_altpll.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+F:/FPGA_Learning/Course Design/CourseDesign_Mars/CourseDesign_Mars_2.13/db|F:/FPGA_Learning/Course Design/CourseDesign_Mars/CourseDesign_Mars_2.13/db/pll_altpll.v|
+!i113 1
+R5
+!s92 -vlog01compat -work work {+incdir+F:/FPGA_Learning/Course Design/CourseDesign_Mars/CourseDesign_Mars_2.13/db}
+R7
+vrd_fifo
+R8
+!i10b 1
+!s100 <Zkd57:UNJ?IP8DCXNzUR0
+IPCLhHB`N?:H6YG_0eZLaW0
+R2
+R0
+w1576805397
+8F:/FPGA_Learning/Course Design/CourseDesign_Mars/CourseDesign_Mars_2.13/ipcore/rd_fifo.v
+FF:/FPGA_Learning/Course Design/CourseDesign_Mars/CourseDesign_Mars_2.13/ipcore/rd_fifo.v
+R9
+R3
+r1
+!s85 0
+31
+R10
+!s107 F:/FPGA_Learning/Course Design/CourseDesign_Mars/CourseDesign_Mars_2.13/ipcore/rd_fifo.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+F:/FPGA_Learning/Course Design/CourseDesign_Mars/CourseDesign_Mars_2.13/ipcore|F:/FPGA_Learning/Course Design/CourseDesign_Mars/CourseDesign_Mars_2.13/ipcore/rd_fifo.v|
+!i113 1
+R5
+R11
+R7
+vsdr_cmd
+Z14 !s110 1581577452
+!i10b 1
+!s100 H]ET0QTiVVP6EX=RIhz[j3
+IHf2YnGQ087]3cN1KzMGhB1
+R2
+R0
+w1576810699
+8F:/FPGA_Learning/Course Design/CourseDesign_Mars/CourseDesign_Mars_2.13/src/sdr_cmd.v
+FF:/FPGA_Learning/Course Design/CourseDesign_Mars/CourseDesign_Mars_2.13/src/sdr_cmd.v
+Z15 FF:/FPGA_Learning/Course Design/CourseDesign_Mars/CourseDesign_Mars_2.13/src/para.v
+L0 1
+R3
+r1
+!s85 0
+31
+Z16 !s108 1581577452.000000
+!s107 F:/FPGA_Learning/Course Design/CourseDesign_Mars/CourseDesign_Mars_2.13/src/para.v|F:/FPGA_Learning/Course Design/CourseDesign_Mars/CourseDesign_Mars_2.13/src/sdr_cmd.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+F:/FPGA_Learning/Course Design/CourseDesign_Mars/CourseDesign_Mars_2.13/src|F:/FPGA_Learning/Course Design/CourseDesign_Mars/CourseDesign_Mars_2.13/src/sdr_cmd.v|
+!i113 1
+R5
+R6
+R7
+vsdr_controller
+Z17 !s110 1581577449
+!i10b 1
+!s100 _l=STj8^L<IJOCBb?8^VH2
+IO8M2PmS;E3^@RczB9mi`K1
+R2
+R0
+w1565670741
+8F:/FPGA_Learning/Course Design/CourseDesign_Mars/CourseDesign_Mars_2.13/src/sdr_controller.v
+FF:/FPGA_Learning/Course Design/CourseDesign_Mars/CourseDesign_Mars_2.13/src/sdr_controller.v
+L0 1
+R3
+r1
+!s85 0
+31
+Z18 !s108 1581577449.000000
+!s107 F:/FPGA_Learning/Course Design/CourseDesign_Mars/CourseDesign_Mars_2.13/src/sdr_controller.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+F:/FPGA_Learning/Course Design/CourseDesign_Mars/CourseDesign_Mars_2.13/src|F:/FPGA_Learning/Course Design/CourseDesign_Mars/CourseDesign_Mars_2.13/src/sdr_controller.v|
+!i113 1
+R5
+R6
+R7
+vsdr_ctrl
+R14
+!i10b 1
+!s100 Sfga][`ob_nbI:lE0@^Xn1
+I[ceYFcTE<RlT2CicCKGaj2
+R2
+R0
+w1576823330
+8F:/FPGA_Learning/Course Design/CourseDesign_Mars/CourseDesign_Mars_2.13/src/sdr_ctrl.v
+FF:/FPGA_Learning/Course Design/CourseDesign_Mars/CourseDesign_Mars_2.13/src/sdr_ctrl.v
+R15
+L0 2
+R3
+r1
+!s85 0
+31
+R13
+!s107 F:/FPGA_Learning/Course Design/CourseDesign_Mars/CourseDesign_Mars_2.13/src/para.v|F:/FPGA_Learning/Course Design/CourseDesign_Mars/CourseDesign_Mars_2.13/src/sdr_ctrl.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+F:/FPGA_Learning/Course Design/CourseDesign_Mars/CourseDesign_Mars_2.13/src|F:/FPGA_Learning/Course Design/CourseDesign_Mars/CourseDesign_Mars_2.13/src/sdr_ctrl.v|
+!i113 1
+R5
+R6
+R7
+vsdr_ctrl_top
+R17
+!i10b 1
+!s100 imGDh1bJT2NlR?daN2>@m0
+Ifzz294STAbIe3HAWQWi7N3
+R2
+R0
+w1581575204
+8F:/FPGA_Learning/Course Design/CourseDesign_Mars/CourseDesign_Mars_2.13/src/sdr_ctrl_top.v
+FF:/FPGA_Learning/Course Design/CourseDesign_Mars/CourseDesign_Mars_2.13/src/sdr_ctrl_top.v
+L0 1
+R3
+r1
+!s85 0
+31
+R18
+!s107 F:/FPGA_Learning/Course Design/CourseDesign_Mars/CourseDesign_Mars_2.13/src/sdr_ctrl_top.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+F:/FPGA_Learning/Course Design/CourseDesign_Mars/CourseDesign_Mars_2.13/src|F:/FPGA_Learning/Course Design/CourseDesign_Mars/CourseDesign_Mars_2.13/src/sdr_ctrl_top.v|
+!i113 1
+R5
+R6
+R7
+vsdr_ctrl_top_tb
+R14
+!i10b 1
+!s100 OgD@2235i3lc@W91einQU0
+Id^KKH0jN@1QUQ;dUfYQoj2
+R2
+R0
+w1581576967
+8F:/FPGA_Learning/Course Design/CourseDesign_Mars/CourseDesign_Mars_2.13/sdr_ctrl_top_tb.v
+FF:/FPGA_Learning/Course Design/CourseDesign_Mars/CourseDesign_Mars_2.13/sdr_ctrl_top_tb.v
+L0 2
+R3
+r1
+!s85 0
+31
+R16
+!s107 F:/FPGA_Learning/Course Design/CourseDesign_Mars/CourseDesign_Mars_2.13/sdr_ctrl_top_tb.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+F:/FPGA_Learning/Course Design/CourseDesign_Mars/CourseDesign_Mars_2.13|F:/FPGA_Learning/Course Design/CourseDesign_Mars/CourseDesign_Mars_2.13/sdr_ctrl_top_tb.v|
+!i113 1
+R5
+!s92 -vlog01compat -work work {+incdir+F:/FPGA_Learning/Course Design/CourseDesign_Mars/CourseDesign_Mars_2.13}
+R7
+vsdr_data
+R12
+!i10b 1
+!s100 J3PiaYRL_[FYY^BG8PhCe1
+IUEPQ3WE5fR;jF1??f^c251
+R2
+R0
+w1565670876
+8F:/FPGA_Learning/Course Design/CourseDesign_Mars/CourseDesign_Mars_2.13/src/sdr_data.v
+FF:/FPGA_Learning/Course Design/CourseDesign_Mars/CourseDesign_Mars_2.13/src/sdr_data.v
+R15
+L0 1
+R3
+r1
+!s85 0
+31
+R13
+!s107 F:/FPGA_Learning/Course Design/CourseDesign_Mars/CourseDesign_Mars_2.13/src/para.v|F:/FPGA_Learning/Course Design/CourseDesign_Mars/CourseDesign_Mars_2.13/src/sdr_data.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+F:/FPGA_Learning/Course Design/CourseDesign_Mars/CourseDesign_Mars_2.13/src|F:/FPGA_Learning/Course Design/CourseDesign_Mars/CourseDesign_Mars_2.13/src/sdr_data.v|
+!i113 1
+R5
+R6
+R7
+vsdr_fifo_ctrl
+R17
+!i10b 1
+!s100 mO]V`0c5[g=zg2a8=AoM62
+IIkTGS<DTF:QZU@Zf:<lm>3
+R2
+R0
+w1576823344
+8F:/FPGA_Learning/Course Design/CourseDesign_Mars/CourseDesign_Mars_2.13/src/sdr_fifo_ctrl.v
+FF:/FPGA_Learning/Course Design/CourseDesign_Mars/CourseDesign_Mars_2.13/src/sdr_fifo_ctrl.v
+L0 1
+R3
+r1
+!s85 0
+31
+R18
+!s107 F:/FPGA_Learning/Course Design/CourseDesign_Mars/CourseDesign_Mars_2.13/src/sdr_fifo_ctrl.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+F:/FPGA_Learning/Course Design/CourseDesign_Mars/CourseDesign_Mars_2.13/src|F:/FPGA_Learning/Course Design/CourseDesign_Mars/CourseDesign_Mars_2.13/src/sdr_fifo_ctrl.v|
+!i113 1
+R5
+R6
+R7
+vsdr_test
+R17
+!i10b 1
+!s100 5noJ[n:^>GHcG0zWdi^Ob1
+Ic>V>5DHjUJbCCQQeCh1zQ0
+R2
+R0
+w1581155861
+8F:/FPGA_Learning/Course Design/CourseDesign_Mars/CourseDesign_Mars_2.13/src/sdr_test.v
+FF:/FPGA_Learning/Course Design/CourseDesign_Mars/CourseDesign_Mars_2.13/src/sdr_test.v
+L0 1
+R3
+r1
+!s85 0
+31
+R18
+!s107 F:/FPGA_Learning/Course Design/CourseDesign_Mars/CourseDesign_Mars_2.13/src/sdr_test.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+F:/FPGA_Learning/Course Design/CourseDesign_Mars/CourseDesign_Mars_2.13/src|F:/FPGA_Learning/Course Design/CourseDesign_Mars/CourseDesign_Mars_2.13/src/sdr_test.v|
+!i113 1
+R5
+R6
+R7
+vsdr_top
+R1
+!i10b 1
+!s100 ;25T0G>jbJAOk3e_gG4?D2
+IVDMdd7b9E@Ql0^d@T_WH92
+R2
+R0
+w1565670733
+8F:/FPGA_Learning/Course Design/CourseDesign_Mars/CourseDesign_Mars_2.13/src/sdr_top.v
+FF:/FPGA_Learning/Course Design/CourseDesign_Mars/CourseDesign_Mars_2.13/src/sdr_top.v
+L0 1
+R3
+r1
+!s85 0
+31
+R4
+!s107 F:/FPGA_Learning/Course Design/CourseDesign_Mars/CourseDesign_Mars_2.13/src/sdr_top.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+F:/FPGA_Learning/Course Design/CourseDesign_Mars/CourseDesign_Mars_2.13/src|F:/FPGA_Learning/Course Design/CourseDesign_Mars/CourseDesign_Mars_2.13/src/sdr_top.v|
+!i113 1
+R5
+R6
+R7
+vSeg
+R8
+!i10b 1
+!s100 E4G7z9_@?BCJH0Q@4Q:Am3
+I@cI>QhM9QSKkSIQ<=6]Q_3
+R2
+R0
+w1578473059
+8F:/FPGA_Learning/Course Design/CourseDesign_Mars/CourseDesign_Mars_2.13/src/Seg.v
+FF:/FPGA_Learning/Course Design/CourseDesign_Mars/CourseDesign_Mars_2.13/src/Seg.v
+L0 1
+R3
+r1
+!s85 0
+31
+R10
+!s107 F:/FPGA_Learning/Course Design/CourseDesign_Mars/CourseDesign_Mars_2.13/src/Seg.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+F:/FPGA_Learning/Course Design/CourseDesign_Mars/CourseDesign_Mars_2.13/src|F:/FPGA_Learning/Course Design/CourseDesign_Mars/CourseDesign_Mars_2.13/src/Seg.v|
+!i113 1
+R5
+R6
+R7
+n@seg
+vwr_fifo
+R8
+!i10b 1
+!s100 =P89QQz87OfzWQd36I1jo3
+ImaOVUeL:7?4E^;BZ?HkdC3
+R2
+R0
+w1576805395
+8F:/FPGA_Learning/Course Design/CourseDesign_Mars/CourseDesign_Mars_2.13/ipcore/wr_fifo.v
+FF:/FPGA_Learning/Course Design/CourseDesign_Mars/CourseDesign_Mars_2.13/ipcore/wr_fifo.v
+R9
+R3
+r1
+!s85 0
+31
+R10
+!s107 F:/FPGA_Learning/Course Design/CourseDesign_Mars/CourseDesign_Mars_2.13/ipcore/wr_fifo.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+F:/FPGA_Learning/Course Design/CourseDesign_Mars/CourseDesign_Mars_2.13/ipcore|F:/FPGA_Learning/Course Design/CourseDesign_Mars/CourseDesign_Mars_2.13/ipcore/wr_fifo.v|
+!i113 1
+R5
+R11
+R7
